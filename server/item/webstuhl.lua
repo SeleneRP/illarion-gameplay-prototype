@@ -55,5 +55,7 @@ Routines.register_routine("illarion:loom")
     end).on_abort(function(entity_id)
         Chat.speak_as_g(entity_id, i18n("generic.chat.abort_work"))
     end).on_failure(function(entity_id, error)
-        Chat.inform(entity_id, i18n(error))
+        if type(error) == "string" then
+            Chat.inform(entity_id, i18n(error))
+        end
     end)
